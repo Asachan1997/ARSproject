@@ -267,6 +267,21 @@ public class auditlocators {
 	private static WebElement mydocumentselectcompany=null;
 	private static WebElement mydocumentdownload=null;
 	private static WebElement mydocumentmessage=null;
+	private static WebElement mydocumentclick1=null;
+	private static WebElement mydocumentclick2=null;
+	private static WebElement mydocumentclick3=null;
+	private static WebElement mydocumentclick4=null;
+	private static WebElement mydocumentclick5=null;
+	private static WebElement mydocumentDeleted=null;
+	private static WebElement mydocumentDeleteddownload=null;
+	private static WebElement mydocumentFeedback=null;
+	private static WebElement mydocumentreview=null;
+	private static WebElement myannexuredocumentdownload=null;
+	private static WebElement mydocumentannexure=null;
+	private static WebElement myreviewdocumentdownload=null;
+	private static WebElement mydocumentFeedbackdownload=null;
+	private static WebElement mydocumentFinaldeliverable=null;
+	private static WebElement myFinaldeliverabledocumentdownload=null;
 	private static WebElement myreport=null;
 	private static WebElement myreportexecutivereport=null;
 	private static WebElement myreportcompany=null;
@@ -392,6 +407,19 @@ public class auditlocators {
 	private static WebElement deparmentmessage=null;
 	private static WebElement prupdateme=null;
 	private static WebElement ok=null;
+	private static WebElement exporttoexcel=null;
+	private static WebElement firstname1=null;
+	private static WebElement clicksearchsub=null;
+	private static WebElement subexporttoexcelbtn=null;
+	private static WebElement editback=null;
+	private static WebElement subunit1=null;
+	private static WebElement subunitedit=null;
+	private static WebElement subunitsave=null;
+	private static WebElement subunitmessage1=null;
+	private static WebElement subunitmessage4=null;
+	private static WebElement subunitmessage5=null;
+	private static WebElement auditoteamrmessage=null;
+	private static WebElement subunitmessage6=null;
 	public static WebElement setUname(WebDriver driver) {
 		uName=driver.findElement(By.xpath("//*[@id='txtemail']"));
 		return uName;
@@ -507,7 +535,7 @@ public static WebElement clicksavebtn(WebDriver driver) {
 	return savebtn;
 }
 public static WebElement clickusermessage(WebDriver driver) {
-	usermessage=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_udcInputForm_ValidationSummary15\']/ul/li"));
+	usermessage=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_udcInputForm_ValidationSummary15']/ul/li"));
 	return usermessage;
 }
 
@@ -528,14 +556,11 @@ public static WebElement clickeditbtn(WebDriver driver) {
 	return editbtn;
 }
 
-//public  static WebElement setfirstname1(WebDriver driver) {
+public  static WebElement setfirstname1(WebDriver driver) {
 	
-//	firstname1=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_udcInputForm_tbxFirstName']"));
-
-	//firstname1.clear();
-	
-	//return firstname1;
-//}
+	firstname1=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_udcInputForm_tbxFirstName']"));
+	return firstname1;
+}
 
 public static WebElement clickbtnsave(WebDriver driver) {
 	btnsave=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_udcInputForm_btnSave']"));
@@ -550,20 +575,27 @@ public static WebElement clickbtncancel(WebDriver driver) {
 	return btncancel;
 }
 
-//public static WebElement clickremovebtn(WebDriver driver) {
-	//removebtn=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdUser_lbtnDelete_0']/img"));
-	//return removebtn;
-//}
+public static WebElement clickremovebtn(WebDriver driver) {
+	removebtn=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdUser_lbtnDelete_0']/img"));
+	//*[@id="ContentPlaceHolder1_grdUser_lbtnDelete_0"]/img
+	return removebtn;
+}
 
 public static WebElement clickpasswordbtn(WebDriver driver) {
 	passwordbtn=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdUser_lbtnReset_0']/img"));
+	//*[@id="ContentPlaceHolder1_grdUser_lbtnReset_0"]/img
 	return passwordbtn;
+}
+
+public static WebElement clickexporttoexcel(WebDriver driver) {
+	exporttoexcel=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_lnkExportUserlist']"));
+	return exporttoexcel;
 }
 
 public  static WebElement clickunitmaster(WebDriver driver) {
 	
-	unitmaster=driver.findElement(By.xpath("//*[@id='CMPMenuBar:submenu:5']/li[1]/a"));
-	//*[@id="CMPMenuBar:submenu:5"]/li[1]
+	unitmaster=driver.findElement(By.xpath("//*[@id='CMPMenuBar:submenu:6']/li[1]/a"));
+	//*[@id="CMPMenuBar:submenu:6"]/li[1]/a
 	return unitmaster;
 }
 public  static WebElement clickaddnewbtn(WebDriver driver) {
@@ -614,7 +646,7 @@ public  static WebElement clickcity(WebDriver driver) {
 }
 public  static WebElement clickchoosecity(WebDriver driver) {
 	
-	choosecity=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ddlCity']/option[5]"));
+	choosecity=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ddlCity']/option[3]"));
 	return choosecity;
 
 }
@@ -680,12 +712,12 @@ public  static WebElement clickcupdateunit(WebDriver driver) {
 }
 public  static WebElement clickfirstnameedit(WebDriver driver) {
 	
-	firstnameedit=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_tbxName']"));
+	firstnameedit=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_tbxAddressLine1']"));
 	return firstnameedit;
 }
 public  static WebElement clickfirstnameenter(WebDriver driver) {
 	
-	firstnameenter=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_tbxName']"));
+	firstnameenter=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_tbxAddressLine1']"));
 	return firstnameenter;
 }
 
@@ -718,6 +750,7 @@ public static WebElement clicksubunit(WebDriver driver) {
 }
 public static WebElement clickaddnewunit(WebDriver driver) {
 	addnewunit=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btnAddCustomerBranch']"));
+	//*[@id="ContentPlaceHolder1_grdCustomerBranch"]/tbody/tr[2]/td[9]/a
 	return addnewunit;
 }
 
@@ -742,7 +775,7 @@ public static WebElement clickstate1(WebDriver driver) {
 	return state1;
 }
 public static WebElement clickselectstate1(WebDriver driver) {
-	selectstate1=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_ddlState\']/option[4]"));
+	selectstate1=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ddlState']/option[18]"));
 	return selectstate1;
 }
 public static WebElement clickcity1(WebDriver driver) {
@@ -776,6 +809,30 @@ public static WebElement clickselectstatus1(WebDriver driver) {
 public static WebElement clickbtnsave1(WebDriver driver) {
 	btnsave1=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_btnSave\']"));
 	return btnsave1;
+}
+public static WebElement clicksubexporttoexcelbtn(WebDriver driver) {
+	subexporttoexcelbtn=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_lnkExportCustomerBranchlist']"));
+	return subexporttoexcelbtn;
+}
+public static WebElement clicksearchsub(WebDriver driver) {
+	clicksearchsub=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_tbxFilter']"));
+	return clicksearchsub;
+}
+public static WebElement clicksubunit1(WebDriver driver) {
+	subunit1=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdCustomerBranch_LinkButton1_0']/img"));
+	return subunit1;
+}
+public static WebElement clicksubunitedit(WebDriver driver) {
+	subunitedit=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdCustomerBranch_LinkButton1_0']/img"));
+	return subunitedit;
+}
+public static WebElement clicksubunitsave(WebDriver driver) {
+	subunitsave=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btnSave']"));
+	return subunitsave;
+}
+public static WebElement clicksubunitmessage1(WebDriver driver) {
+	subunitmessage1=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_valcustomerbranch']/ul/li']"));
+	return subunitmessage1;
 }
 
 public static WebElement clickbtncancel1(WebDriver driver) {
@@ -821,11 +878,12 @@ public static WebElement clickpronamedit(WebDriver driver) {
 	return pronamedit;
 }
 public static WebElement clickprocsave(WebDriver driver) {
-	procsave=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_btnSave\']"));
+	procsave=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btnSave']"));
 	return procsave;
 }
 public static WebElement clickprocmess(WebDriver driver) {
-	procmess=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_btnSave\']"));
+	procmess=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
+	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
 	return procmess;
 }
 public static WebElement clickprocclose(WebDriver driver) {
@@ -838,11 +896,11 @@ public static WebElement clickactivityupdateme(WebDriver driver) {
 	return activityupdateme;
 }
 public static WebElement clickactivityeme(WebDriver driver) {
-	activityeme=driver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ValidationSummary1\"]/ul/li"));
+	activityeme=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
 	return activityeme;
 }
 public static WebElement clickprupdateme(WebDriver driver) {
-	prupdateme=driver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ValidationSummary1\"]/ul/li"));
+	prupdateme=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
 	return prupdateme;
 }
 
@@ -917,6 +975,10 @@ public static WebElement clickeditsaveactivity(WebDriver driver) {
 public static WebElement clickeditcancelactivity(WebDriver driver) {
 	editcancelactivity=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_btnCancel\']"));
 	return editcancelactivity;
+}
+public static WebElement clickeditback(WebDriver driver) {
+	editback=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_lnkBackToProcess']"));
+	return editback;
 }
 public static WebElement clickdeparmentmaster(WebDriver driver) {
 	deparmentmaster=driver.findElement(By.xpath("//*[@id='CMPMenuBar:submenu:6']/li[2]/a"));
@@ -1021,7 +1083,8 @@ public static WebElement clicksubobservationsave(WebDriver driver) {
 	return subobservationsave;
 }
 public static WebElement clickobservationsubcategorymessage(WebDriver driver) {
-	observationsubcategorymessage=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_ValidationSummary1\']/ul/li"));
+	observationsubcategorymessage=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
+	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
 	return observationsubcategorymessage;
 }
 public static WebElement clicksubsubobservationcancel(WebDriver driver) {
@@ -1082,7 +1145,8 @@ public static WebElement clickriskcategorysearchbox(WebDriver driver) {
 	return riskcategorysearchbox;
 }
 public static WebElement clickriskcategoryedit(WebDriver driver) {
-	riskcategoryedit=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_grdRiskcategoryList_lbtEdit_0\']/img"));
+	riskcategoryedit=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdRiskcategoryList_lbtEdit_0']/img"));
+	//*[@id="ContentPlaceHolder1_grdRiskcategoryList_lbtEdit_0"]/img
 	return riskcategoryedit;
 }
 public static WebElement clickriskcategoryeditname(WebDriver driver) {
@@ -1109,7 +1173,21 @@ public static WebElement clickriskcategoryfilter(WebDriver driver) {
 public static WebElement clicksubunitmessage(WebDriver driver) {
 	subunitmessage=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
 	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
+	//*[@id="ContentPlaceHolder1_valcustomerbranch"]/ul/li
+	//*[@id="ContentPlaceHolder1_valcustomerbranch"]/ul/li
 	return subunitmessage;
+}
+public static WebElement clicksubunitmessage4(WebDriver driver) {
+	subunitmessage4=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_valcustomerbranch']/ul/li"));
+	return subunitmessage4;
+}
+public static WebElement clicksubunitmessage5(WebDriver driver) {
+	subunitmessage5=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_valcustomerbranch']/ul/li"));
+	return subunitmessage5;
+}
+public static WebElement clicksubunitmessage6(WebDriver driver) {
+	subunitmessage6=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_valcustomerbranch']/ul/li"));
+	return subunitmessage6;
 }
 public static WebElement clickauditormaster(WebDriver driver) {
 	auditormaster=driver.findElement(By.xpath("//*[@id=\"CMPMenuBar:submenu:6\"]/li[9]/a"));
@@ -1188,7 +1266,8 @@ public  static WebElement clickauditor(WebDriver driver) {
 
 public  static WebElement clickchooseauditor(WebDriver driver) {
 	
-	chooseauditor=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ddlAuditor']/option[3]"));
+	chooseauditor=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ddlAuditor']/option[2]"));
+	//*[@id="ContentPlaceHolder1_ddlAuditor"]/option[2]
 	return chooseauditor;
 }
 public  static WebElement clickauditorfirname(WebDriver driver) {
@@ -1218,9 +1297,17 @@ public  static WebElement clickauditorsave(WebDriver driver) {
 }
 public  static WebElement clickauditormessage(WebDriver driver) {
 	
-	auditormessage=driver.findElement(By.xpath("//*[@id=\'ContentPlaceHolder1_ValidationSummary1\']/ul/li"));
+	auditormessage=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
+	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
 	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
 	return auditormessage;
+}
+public  static WebElement clickauditoteamrmessage(WebDriver driver) {
+	
+	auditoteamrmessage=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
+	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
+	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
+	return auditoteamrmessage;
 }
 public  static WebElement clickauditorcancel(WebDriver driver) {
 	
@@ -1266,7 +1353,8 @@ public  static WebElement clickauditoreditcancel(WebDriver driver) {
 }
 public  static WebElement clickverticalmaster(WebDriver driver) {
 	
-	verticalmaster=driver.findElement(By.xpath("//*[@id=\"CMPMenuBar:submenu:6\"]/li[3]/a"));
+	verticalmaster=driver.findElement(By.xpath("//*[@id='CMPMenuBar:submenu:6']/li[3]/a"));
+	//*[@id="CMPMenuBar:submenu:6"]/li[3]/a
 	return verticalmaster;
 }
 public  static WebElement clickverticalmasteradd(WebDriver driver) {
@@ -1295,7 +1383,8 @@ public  static WebElement clickverticalmastercancel(WebDriver driver) {
 	return verticalmastercancel;
 }
 public  static WebElement clickverticalmasteredit(WebDriver driver) {
-	verticalmasteredit=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdAuditor_LinkButton1_2']/img"));
+	verticalmasteredit=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdAuditor_LinkButton1_1']/img"));
+	//*[@id="ContentPlaceHolder1_grdAuditor_LinkButton1_1"]/img
 	return verticalmasteredit;
 }
 public  static WebElement clickverticalmastereditname(WebDriver driver) {
@@ -1457,7 +1546,8 @@ public  static WebElement clickcitystate(WebDriver driver) {
 }
 
 public  static WebElement clickselectcitystate(WebDriver driver) {
-	selectcitystate=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ddlStateList_chosen']/div/ul/li[26]"));
+	selectcitystate=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ddlStateList_chosen']/div/ul/li[32]"));
+	//*[@id="ContentPlaceHolder1_ddlStateList_chosen"]/div/ul/li[32]
 	return selectcitystate;
 }
 public  static WebElement clickcitysearch(WebDriver driver) {
@@ -1469,7 +1559,7 @@ public  static WebElement clickcityedit(WebDriver driver) {
 	return cityedit;
 }
 public  static WebElement clickcityeditname(WebDriver driver) {
-	cityeditname=driver.findElement(By.xpath("//[@id='ContentPlaceHolder1_txtFName']"));
+	cityeditname=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_txtFName']"));
 	return cityeditname;
 }
 public  static WebElement clickcityeditsave(WebDriver driver) {
@@ -1486,6 +1576,7 @@ public  static WebElement clickcityeditcancel(WebDriver driver) {
 }
 public  static WebElement clickprocessratingmaster(WebDriver driver) {
 	processratingmaster=driver.findElement(By.xpath("//*[@id='CMPMenuBar:submenu:6']/li[13]/a"));
+	//*[@id="CMPMenuBar:submenu:6"]/li[13]/a
 	return processratingmaster;
 }
 public  static WebElement clickprocessratingmasteradd(WebDriver driver) {
@@ -1604,6 +1695,72 @@ public  static WebElement clickmydocumentdownload(WebDriver driver) {
 public  static WebElement clickmydocumentmessage(WebDriver driver) {
 	mydocumentmessage=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
 	return mydocumentmessage;  
+}
+public static WebElement clickmydocumentclick1(WebDriver driver) {
+	mydocumentclick1=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']"));
+	return mydocumentclick1;
+}
+public static WebElement clickmydocumentreview(WebDriver driver) {
+	mydocumentreview=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']/option[2]"));
+	//*[@id="ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0"]/option[2]
+	//*[@id="ContentPlaceHolder1_ddlFinancialYear_chosen"]/div/ul/li[3]
+	return mydocumentreview;
+}
+public static WebElement clickmyreviewdocumentdownload(WebDriver driver) {
+	myreviewdocumentdownload=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_lblDocumentDownLoadfile_0']"));
+	return myreviewdocumentdownload;
+}
+public static WebElement clickmydocumentclick2(WebDriver driver) {
+	mydocumentclick2=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']"));
+	return mydocumentclick2;
+}
+public static WebElement clickmydocumentannexure(WebDriver driver) {
+	mydocumentannexure=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']/option[3]"));
+	return mydocumentannexure;
+}
+public static WebElement clickmyannexuredocumentdownload(WebDriver driver) {
+	myannexuredocumentdownload=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_lblDocumentDownLoadfile_0']"));
+	return myannexuredocumentdownload;
+}
+
+public static WebElement clickmydocumentclick3(WebDriver driver) {
+	mydocumentclick3=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']"));
+	return mydocumentclick3;
+}
+public static WebElement clickmydocumentFinaldeliverable(WebDriver driver) {
+	mydocumentFinaldeliverable=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']/option[5]"));
+	return mydocumentFinaldeliverable;
+}
+public static WebElement clickmyFinaldeliverabledocumentdownload(WebDriver driver) {
+	myFinaldeliverabledocumentdownload=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_lblDocumentDownLoadfile_0']"));
+	return myFinaldeliverabledocumentdownload;
+}
+
+public static WebElement clickmydocumentclick4(WebDriver driver) {
+	mydocumentclick4=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']"));
+	return mydocumentclick4;
+}
+public static WebElement clickmydocumentFeedback(WebDriver driver) {
+	mydocumentFeedback=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']/option[7]"));
+	return mydocumentFeedback;
+}
+public static WebElement clickmydocumentFeedbackdownload(WebDriver driver) {
+	mydocumentFeedbackdownload=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_lblDocumentDownLoadfile_0']"));
+	return mydocumentFeedbackdownload;
+}
+
+public static WebElement clickmydocumentclick5(WebDriver driver) {
+	mydocumentclick5=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']"));
+	return mydocumentclick5;
+}
+public static WebElement clickmydocumentDeleted(WebDriver driver) {
+	mydocumentDeleted=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0']/option[6]"));
+	//*[@id="ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_ddlDocumentFile_0"]/option[6]
+	return mydocumentDeleted;
+}
+public static WebElement clickmydocumentDeleteddownload(WebDriver driver) {
+	mydocumentDeleteddownload=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_lblDocumentDownLoadfile_0']"));
+	return mydocumentDeleteddownload;
 }
 public  static WebElement clickmyreport(WebDriver driver) {
 	myreport=driver.findElement(By.xpath("//*[@id=\"CMPMenuBar\"]/ul/li[11]/a"));

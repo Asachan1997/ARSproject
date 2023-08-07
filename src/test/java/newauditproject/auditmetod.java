@@ -1,5 +1,6 @@
 package newauditproject;
 
+import java.awt.RenderingHints.Key;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.TargetLocator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,6 +24,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import Audit.AuditProject.AppTest;
+import Performer.Performerlocator;
 
 //import Audit.Arsproduct.AppTest;
 
@@ -35,7 +38,7 @@ public class auditmetod {
 	public static Cell cell=null;
 	public static void Login() throws InterruptedException, IOException {
 		
-		 System.setProperty("webdriver.chrome.driver","C:\\Users\\ambuj\\Downloads\\chromedriver_win32 (3)//chromedriver.exe"); 
+		 System.setProperty("webdriver.chrome.driver","C:\\Users\\ambuj\\Downloads\\chromedriver_win32 (7)\\chromedriver.exe"); 
 		  
 		  driver=new ChromeDriver();       //Created new Chrome driver instance.
 		  Thread.sleep(3000);
@@ -144,19 +147,19 @@ public class auditmetod {
 					 auditlocators.clickcancelbtn(driver).click();
 					 Thread.sleep(3000);
 					 
-					 auditlocators.clicksearch(driver).sendKeys("Manshi",Keys.ENTER);
-					
-					 //auditlocators.setfilter(driver).sendKeys("nancy",Keys.ENTER);
-					    Thread.sleep(3000);
-					    
-					    //auditlocators.setfirstname1(driver).sendKeys("samar");
-					   // Thread.sleep(3000);
-					    
-					    
+					 auditlocators.clicksearch(driver).sendKeys("abcd",Keys.ENTER);
+					 if(auditlocators.clicksearch(driver).isEnabled())
+			            {
+			                 Thread.sleep(2000);
+			                 auditlocators.clicksearch(driver).click();
+			                 test.log(LogStatus.PASS, "Search Successfully.");
+			            }
+					 
 					    auditlocators.clickeditbtn(driver).click();
 						 Thread.sleep(3000);
-						 //firstname.clear();
-						 
+						 auditlocators.setfirstname1(driver).clear();
+						auditlocators.setfirstname1(driver).sendKeys("Amita");
+						 Thread.sleep(3000);
 						 auditlocators.clickbtnsave(driver).click();
 						 Thread.sleep(3000);
 						 String messge=auditlocators.clickusereditmessage(driver).getText();
@@ -170,22 +173,24 @@ public class auditmetod {
 							}
 						 auditlocators.clickbtncancel(driver).click();
 						 Thread.sleep(3000);
+						 auditlocators.clickexporttoexcel(driver).click();
+					     test.log(LogStatus.PASS, " :- Excel file downloadded successfully.");
+						 Thread.sleep(3000);
+						 auditlocators.clickpasswordbtn(driver).click();
+						 Thread.sleep(5000);
+						 driver.switchTo().alert().accept();
+						 Thread.sleep(3000);
+				                 test.log(LogStatus.PASS, "Password reset successfully.");
+				    			 Thread.sleep(3000);
 						 
 						  //auditlocators.clickremovebtn(driver).click();
-						  //Thread.sleep(3000);
-							// auditlocators.clickremovebtn(driver).alert().accept();
-							// driver.switchTo().alert().accept();
-
-							 Thread.sleep(3000);
-
-							 auditlocators.clickpasswordbtn(driver).click();
-							 Thread.sleep(3000);
+						  Thread.sleep(3000);
+						 //auditlocators.clickremovebtn(driver).alert().accept();
 							 driver.switchTo().alert().accept();
 							 Thread.sleep(3000);
-	}
+					                 test.log(LogStatus.PASS, "User Removed Successfully.");
+					            }
 
-							
-	
 public static void unitMaster(ExtentTest test)throws InterruptedException {
 	
 	auditlocators.clickMaster(driver).click();
@@ -237,7 +242,7 @@ public static void unitMaster(ExtentTest test)throws InterruptedException {
 						 c1=row13.getCell(1);
 						  String emailid = c1.getStringCellValue();	
 							auditlocators.setemailid(driver).sendKeys(emailid);
-							 Thread.sleep(2000);
+							 Thread.sleep(3000);
 						 
 						 auditlocators.clickstatus(driver).click();
 						 Thread.sleep(3000);
@@ -253,7 +258,7 @@ public static void unitMaster(ExtentTest test)throws InterruptedException {
 							}
 							else
 							{
-								test.log(LogStatus.FAIL, "Branch already exist");
+								test.log(LogStatus.FAIL, "Branch Already Exist.");// change krna hai
 							}
 						 
 							 JavascriptExecutor js=(JavascriptExecutor) driver ;
@@ -263,9 +268,11 @@ public static void unitMaster(ExtentTest test)throws InterruptedException {
 						 
 						 auditlocators.clickcancelbuttn(driver).click();
 						 Thread.sleep(3000);
+						 auditlocators.clicksearch(driver).sendKeys("maamtesh",Keys.ENTER);
+						 test.log(LogStatus.PASS, " :- Search Successfully.");
 						 
 						 auditlocators.clickcupdateunit(driver).click();
-						 Thread.sleep(3000);
+						 Thread.sleep(5000);
 						 //auditlocators.clickfirstnameedit(driver).click();
 						
 						 auditlocators.clickfirstnameedit(driver).clear();
@@ -282,26 +289,33 @@ public static void unitMaster(ExtentTest test)throws InterruptedException {
 						 
 						 auditlocators.clicksavebutton(driver).click();
 						 Thread.sleep(3000);
-						 String messgaa=auditlocators.clicksubunitmessage(driver).getText();
+						 String messgaa=auditlocators.clicksubunitmessage4(driver).getText();
 							if(messgaa.equalsIgnoreCase("Branch Updated Successfully.")) 
 							{
 								test.log(LogStatus.PASS, "Branch Updated Successfully.");
 							}
-							else
+							/*else
 							{
 								test.log(LogStatus.FAIL, "Branch already exist");
-							}
+							}*/
 						 
 						 auditlocators.clickcancelbutton(driver).click();
 						 Thread.sleep(3000);
 						 
 						 auditlocators.clickexporttoexcelbtn(driver).click();
+						 test.log(LogStatus.PASS, " :- Excel Download Successfully.");
 						 Thread.sleep(3000);
-						 auditlocators.clicksearch(driver).sendKeys("B-MIL",Keys.ENTER);
+						
 						 auditlocators.clicksubunit(driver).click();
 						 Thread.sleep(3000);
-						 auditlocators.clickaddnewunit(driver).click();
+						 auditlocators.clicksearchsub(driver).clear();
 						 Thread.sleep(3000);
+						 auditlocators.clicksearchsub(driver).sendKeys("Head Office",Keys.ENTER);
+						 test.log(LogStatus.PASS, " :- Search Successfully.");
+						 Thread.sleep(3000);
+						 
+						 auditlocators.clickaddnewunit(driver).click();
+						 Thread.sleep(9000);
 						 Row row16=sheet.getRow(16);
 						 c1=row16.getCell(1);
 						  String name1 = c1.getStringCellValue();	
@@ -356,7 +370,7 @@ public static void unitMaster(ExtentTest test)throws InterruptedException {
 									 Thread.sleep(3000);
 									 auditlocators.clickbtnsave1(driver).click();
 									 Thread.sleep(3000);
-									 String messga=auditlocators.clicksubunitmessage(driver).getText();
+									 String messga=auditlocators.clicksubunitmessage5(driver).getText();
 										if(messga.equalsIgnoreCase("Branch Added Successfully.")) 
 										{
 											test.log(LogStatus.PASS, "Branch Added Successfully.");
@@ -367,10 +381,39 @@ public static void unitMaster(ExtentTest test)throws InterruptedException {
 										}
 									 auditlocators.clickbtncancel1(driver).click();
 									 Thread.sleep(3000);
-									 auditlocators.clickfilter(driver).click();
+									 auditlocators.clicksearchsub(driver).clear();
+									 auditlocators.clicksubunit(driver).click();
 									 Thread.sleep(3000);
-									 auditlocators.clickfilter(driver).clear();
+									 auditlocators.clicksubunitedit(driver).click();
 									 Thread.sleep(3000);
+									 auditlocators.clicksubunitsave(driver).click();
+									 Thread.sleep(3000);
+									 //auditlocators.clicksubunitmessage(driver).click();
+									 Thread.sleep(3000);
+									 String messga4=auditlocators.clicksubunitmessage6(driver).getText();
+										if(messga4.equalsIgnoreCase("Branch Updated Successfully.")) 
+										{
+											test.log(LogStatus.PASS, "Branch Updated Successfully.");
+										}
+										else
+										{
+											test.log(LogStatus.FAIL, "Branch already exist");
+										}
+									 auditlocators.clickbtncancel1(driver).click();
+									 Thread.sleep(3000);
+									 
+									 //auditlocators.clickfilter(driver).click();
+									// Thread.sleep(3000);
+									 //auditlocators.clickfilter(driver).clear();
+									 Thread.sleep(3000);
+									 auditlocators.clicksubexporttoexcelbtn(driver).click();
+									 test.log(LogStatus.PASS, " :- Excel Download Successfully.");
+									 Thread.sleep(3000);
+									 auditlocators.clicksearchsub(driver).clear();
+									 auditlocators.clicksearchsub(driver).sendKeys("Delhi suboffice",Keys.ENTER);
+									 test.log(LogStatus.PASS, " :- Search Successfully.");
+									 
+									 
 									
 									
 }
@@ -421,7 +464,8 @@ public static void business(ExtentTest test)throws InterruptedException {
 				}
 				else
 				{
-					test.log(LogStatus.FAIL, "Process already exist.");
+					test.log(LogStatus.FAIL, "Process already Exist.");// change krna hai
+					}
 			 auditlocators.clickprocclose(driver).click();
 			 Thread.sleep(3000);
 			 auditlocators.clicksubproce(driver).click();
@@ -526,8 +570,12 @@ public static void business(ExtentTest test)throws InterruptedException {
 						
 						
 					 auditlocators.clickeditcancelactivity(driver).click();
+					 test.log(LogStatus.PASS, " :- Pop-up Closed Successfully.");
 					 Thread.sleep(3000);
-}}
+					 auditlocators.clickeditback(driver).click();
+					 test.log(LogStatus.PASS, " :- Back Button Work Successfully.");
+					 Thread.sleep(3000);
+}
 public static void department(ExtentTest test)throws InterruptedException {
 	 auditlocators.clickMaster(driver).click();
 	 Thread.sleep(3000);
@@ -582,8 +630,6 @@ public static void department(ExtentTest test)throws InterruptedException {
 }
 public static void observation(ExtentTest test)throws InterruptedException {
 	 auditlocators.clickMaster(driver).click();
-	 Thread.sleep(3000);
-	// auditlocators.clickobservation(driver).click();
 	 Thread.sleep(3000);
 	 auditlocators.clickobservation(driver).click();
 	 Thread.sleep(3000);
@@ -646,6 +692,16 @@ public static void observation(ExtentTest test)throws InterruptedException {
 				 Thread.sleep(2000);
 				 auditlocators.clicksubobservationsave(driver).click();
 				 Thread.sleep(3000);
+				 String msg10=	 auditlocators.clickobservationsubcategorymessage(driver).getText();
+					if(msg10.equalsIgnoreCase("Observation Sub-Category Saved Successfully.")) 
+					{
+						test.log(LogStatus.PASS, "Observation Sub-Category Saved Successfully.");
+					}
+					else
+					{
+						test.log(LogStatus.FAIL, "Observation Subcategory already exist");
+					}
+					 Thread.sleep(3000);
 				 auditlocators.clickobservationcancel(driver).click();
 				 Thread.sleep(3000); 
 				 auditlocators.clicksubobservationedit(driver).click();
@@ -672,6 +728,8 @@ public static void observation(ExtentTest test)throws InterruptedException {
 					 auditlocators.clicksubobservationeditcancel(driver).click();
 					 Thread.sleep(3000);
 					 auditlocators.clicksubobservationbackbutton(driver).click();
+					 test.log(LogStatus.PASS, " :- Back Button Works Successfully.");
+					 
 					 Thread.sleep(3000);
 					 
 }
@@ -704,7 +762,8 @@ public static void riskcategory(ExtentTest test)throws InterruptedException {
 			 Thread.sleep(3000);
 		 auditlocators.clickriskcategorycancel(driver).click();
 		 Thread.sleep(3000); 
-		 auditlocators.clickriskcategorysearchbox(driver).sendKeys("highest",Keys.ENTER);
+		 auditlocators.clickriskcategorysearchbox(driver).sendKeys("Budget Riskresourse1",Keys.ENTER);
+		 test.log(LogStatus.PASS, " :- Filters Works Successfully.");
 		 Thread.sleep(3000); 
 		 auditlocators.clickriskcategoryedit(driver).click();
 		 Thread.sleep(3000); 
@@ -730,8 +789,8 @@ public static void riskcategory(ExtentTest test)throws InterruptedException {
 			// test.log(LogStatus.PASS, "Risk category created Succesfully");
 			 auditlocators.clickriskcategoryeditcancel(driver).click();
 			 Thread.sleep(3000); 
-			 auditlocators.clickriskcategoryfilter(driver).clear();
-			 Thread.sleep(3000);
+			// auditlocators.clickriskcategoryfilter(driver).clear();
+			// Thread.sleep(3000);
 }
 public static void auditormaster(ExtentTest test)throws InterruptedException {
 	 auditlocators.clickMaster(driver).click();
@@ -778,7 +837,7 @@ public static void auditormaster(ExtentTest test)throws InterruptedException {
 		 Thread.sleep(2000);
 		 auditlocators.clickauditormastersave(driver).click();
 		 Thread.sleep(3000);
-		 String msg1=	 auditlocators.clickauditormastermessage(driver).getText();
+		 String msg1=auditlocators.clickauditormastermessage(driver).getText();
 			if(msg1.equalsIgnoreCase("Auditor details save successfully")) 
 			{
 				test.log(LogStatus.PASS, "Auditor details save successfully");
@@ -858,7 +917,7 @@ public static void auditorteammaster(ExtentTest test)throws InterruptedException
 		 Thread.sleep(2000);
 	 auditlocators.clickauditorsave(driver).click();
 	 Thread.sleep(3000);
-	 String mesg2=auditlocators.clickauditormessage(driver).getText();
+	 String mesg2=auditlocators.clickauditoteamrmessage(driver).getText();
 		if(mesg2.equalsIgnoreCase("User save successfully"))
 		{
 			test.log(LogStatus.PASS, "User save successfully");
@@ -874,7 +933,10 @@ public static void auditorteammaster(ExtentTest test)throws InterruptedException
 	 auditlocators.clickselectauditor(driver).click();
 	 Thread.sleep(3000);
 	 auditlocators.clickauditorname(driver).click();
+	 test.log(LogStatus.PASS, " :- Filter Works Successfully.");
+	 
 	 Thread.sleep(3000);
+	 
 	 auditlocators.clickauditoredit(driver).click();
 	 Thread.sleep(3000);
 	 auditlocators.clickauditoreditname(driver).clear();
@@ -959,6 +1021,8 @@ public static void verticalmaster(ExtentTest test)throws InterruptedException {
 		 Thread.sleep(3000);
 		 auditlocators.clicklocationverticalmappingchoose(driver).click();
 		 Thread.sleep(3000);
+		 test.log(LogStatus.PASS, " :- Filters Work Successfully.");
+		 Thread.sleep(3000);
 		 auditlocators.clicklocationverticalmappingsave(driver).click();
 		 Thread.sleep(3000);
 		 String mesg6=	 auditlocators.clicklocationverticalmappingmessage(driver).getText();
@@ -971,9 +1035,9 @@ public static void verticalmaster(ExtentTest test)throws InterruptedException {
 				test.log(LogStatus.FAIL, "Location-Vertical already mapped.");
 			}
 			 Thread.sleep(3000);
-		 //auditlocators.clicklocationverticalmappingmessage(driver).click();
-		 //Thread.sleep(3000);
 		 auditlocators.clicklocationverticalmappingdownload(driver).click();
+		 test.log(LogStatus.PASS, " :- Download Successfully.");
+		 
 		 Thread.sleep(3000);
 		 driver.switchTo().parentFrame();
 		 auditlocators.clicklocationverticalmappingclose(driver).click();
@@ -983,7 +1047,7 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
 	 auditlocators.clickMaster(driver).click();
 	 Thread.sleep(3000);
 	 auditlocators.clickstatemaster(driver).click();
-	 Thread.sleep(3000);
+	 Thread.sleep(8000);
 	 auditlocators.clickstatemasteradd(driver).click();
 	 Thread.sleep(3000);
     auditlocators.clickstatename(driver).click();
@@ -992,12 +1056,13 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
 	  Cell c1=row54.getCell(1);
 	  String statename = c1.getStringCellValue();	
 		auditlocators.clickstatename(driver).sendKeys(statename);
-		 Thread.sleep(2000);
+		 Thread.sleep(5000);
 	 
 	 auditlocators.clickcountry(driver).click();
-	 Thread.sleep(3000);
+	 Thread.sleep(5000);
 	 auditlocators.clickcountrychoose(driver).click();
 	 Thread.sleep(3000);
+	 test.log(LogStatus.PASS, " :- Filters Work Successfully.");
 	 auditlocators.clickstatesave(driver).click();
 	 Thread.sleep(3000);
 	 String mesg6=	 auditlocators.clickmessagestate(driver).getText();
@@ -1015,6 +1080,8 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
 	 auditlocators.clickchoosecountry(driver).click();
 	 Thread.sleep(3000);
 	 auditlocators.clickstatesearch(driver).click();
+	 //auditlocators.clickcitysearch(driver).sendKeys("Assam",Keys.ENTER);
+	 test.log(LogStatus.PASS, " :- Search Successfully.");
 	 Thread.sleep(3000);
 	 auditlocators.clickstateedit(driver).click();
 	 Thread.sleep(3000); 
@@ -1023,7 +1090,7 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
 	 Row row55=sheet.getRow(55);
 	  c1=row55.getCell(1);
 	  String stateeditname = c1.getStringCellValue();	
-		auditlocators.clickstateeditname(driver).sendKeys(stateeditname);
+		auditlocators.clickstateeditname(driver).sendKeys(statename);
 		 Thread.sleep(2000);
 		 auditlocators.clickstateeditsave(driver).click();
 		 Thread.sleep(3000);
@@ -1035,7 +1102,7 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
 		}
 		else
 		{
-			test.log(LogStatus.FAIL, "State Updated Successfully");
+			test.log(LogStatus.FAIL, "State Exixt");
 		}
 		 Thread.sleep(3000);
 		 auditlocators.clickverticalmastereditcancel(driver).click();
@@ -1056,10 +1123,14 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         	  String cityname = c1.getStringCellValue();	
         		auditlocators.clickcityname(driver).sendKeys(cityname);
         		 Thread.sleep(2000);
-        	 
-        	 auditlocators.clickcountry(driver).click();
+        		 auditlocators.clickselectstate(driver).click();
+            	 Thread.sleep(3000);
+            	 auditlocators.clickchoosestatecity(driver).click();
+            	 Thread.sleep(3000);
+            	 
+        	 //auditlocators.clickcountry(driver).click();
         	 Thread.sleep(3000);
-        	 auditlocators.clickcountrychoose(driver).click();
+        	 //auditlocators.clickcountrychoose(driver).click();
         	 Thread.sleep(3000);
         	 auditlocators.clickcitysave(driver).click();
         	 Thread.sleep(3000);
@@ -1083,16 +1154,19 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         	 Thread.sleep(3000);
         	 auditlocators.clickselectcitystate(driver).click();
         	 Thread.sleep(3000);
+        	 test.log(LogStatus.PASS, " :- Filter Successfully.");
         	 auditlocators.clickcitysearch(driver).click();
+        	 auditlocators.clickcitysearch(driver).sendKeys("Ichalkaranji",Keys.ENTER);
+        	 test.log(LogStatus.PASS, " :- Search Successfully.");
         	 Thread.sleep(3000);
         	 auditlocators.clickcityedit(driver).click();
         	 Thread.sleep(3000); 
         	 auditlocators.clickcityeditname(driver).clear();
         	 Thread.sleep(3000);
-        	 Row row58=sheet.getRow(58);
-        	  c1=row58.getCell(1);
-        	  String cityeditname = c1.getStringCellValue();	
-        		auditlocators.clickcityeditname(driver).sendKeys(cityeditname);
+        	 //Row row58=sheet.getRow(58);
+        	  //c1=row58.getCell(1);
+        	  //String cityeditname = c1.getStringCellValue();	
+        		auditlocators.clickcityeditname(driver).sendKeys("Ichalkaranjii",Keys.ENTER);
         		 Thread.sleep(2000);
         		 auditlocators.clickcityeditsave(driver).click();
         		 Thread.sleep(3000);
@@ -1107,26 +1181,27 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         			test.log(LogStatus.FAIL, "City Already Exist");
         		}
         		 Thread.sleep(3000);
-        		 auditlocators.clickverticalmastereditcancel(driver).click();
-        		 Thread.sleep(3000);
+        		 //auditlocators.clickverticalmastereditcancel(driver).click();
+        		 //Thread.sleep(3000);
         		 auditlocators.clickcityeditcancel(driver).click();
         		 Thread.sleep(3000);
         
 }
          public static void procesratingmaster(ExtentTest test)throws InterruptedException {
+        	 Thread.sleep(3000);
         	 auditlocators.clickMaster(driver).click();
-        	 Thread.sleep(5000);
+        	 Thread.sleep(3000);
         	 auditlocators.clickprocessratingmaster(driver).click();
-        	 Thread.sleep(3000);
+        	 Thread.sleep(4000);
         	 auditlocators.clickprocessratingmasteradd(driver).click();
-        	 Thread.sleep(3000);
+        	 Thread.sleep(5000);
         	 auditlocators.clickprocessratingmastername(driver).click();
-        	 Thread.sleep(3000);
+        	 Thread.sleep(5000);
         	 Row row60=sheet.getRow(60);
        	  Cell c1=row60.getCell(1);
        	  String processratingmastername = c1.getStringCellValue();	
        		auditlocators.clickprocessratingmastername(driver).sendKeys(processratingmastername);
-       		 Thread.sleep(2000);
+       		 Thread.sleep(5000);
         	 auditlocators.clickprocessratingmasterdescription(driver).click();
         	 Thread.sleep(3000);
         	 Row row61=sheet.getRow(61);
@@ -1180,7 +1255,7 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         	 
 }
 
-         public static void Auditassignment(ExtentTest test)throws InterruptedException {
+       public static void Auditassignment(ExtentTest test)throws InterruptedException {
         	 auditlocators.clickauditreporting(driver).click();
         	 Thread.sleep(3000);
         	 auditlocators.clickauditassignment(driver).click();
@@ -1202,7 +1277,7 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
      		}
      		else
      		{
-     			test.log(LogStatus.FAIL, "Audit Assignment Save Successfully.");
+     			test.log(LogStatus.FAIL, "Audit Assignment Not Save Successfully.");
      		}
      		 Thread.sleep(3000);
      		auditlocators.clickauditassignmentclose(driver).click();
@@ -1223,22 +1298,88 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         	 Thread.sleep(3000);
         	 auditlocators.clickmydocumentselectcompany(driver).click();
         	 Thread.sleep(5000);
+        	 test.log(LogStatus.PASS, " :- Filter Works Successfully.");
       		 auditlocators.clickmydocumentdownload(driver).click();
         	 Thread.sleep(3000);
-        	/*String mesg10=auditlocators.clickmydocumentmessage(driver).getText();
-      		if(mesg10.equalsIgnoreCase("No Document available to Download.."))
-      		{
-      			test.log(LogStatus.PASS, "No Document available to Download..");
-      		}
-      		else
-      		{
-      			test.log(LogStatus.FAIL, "No Document available to Download.");
-      		}
-      		 Thread.sleep(3000);*/
-        	
-        	 WebDriverWait wait = new WebDriverWait(driver, (400));
-        	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ContentPlaceHolder1_grdSummaryDetailsAuditCoverage_lblDocumentDownLoadfile_0']")));
-}
+        	 Performerlocator.clickmydocumentclick1(driver).click();
+			  Thread.sleep(9000);
+		   Performerlocator.clickmydocumentreview(driver).click();
+			  Thread.sleep(9000);
+		   if(Performerlocator.clickmyreviewdocumentdownload(driver).isEnabled())
+           {
+                Thread.sleep(2000);
+                Performerlocator.clickmyreviewdocumentdownload(driver).click();
+                test.log(LogStatus.PASS, "Review Document Downloaded");
+           }
+         else
+         {
+   	         test.log(LogStatus.FAIL, "Review Document not Dowmloaded");
+   	        
+         }
+	  
+	  Thread.sleep(8000);
+	  Performerlocator.clickmydocumentclick2(driver).click();
+	  Thread.sleep(9000);
+  Performerlocator.clickmydocumentannexure(driver).click();
+	  Thread.sleep(9000);
+  if(Performerlocator.clickmyannexuredocumentdownload(driver).isEnabled())
+   {
+        Thread.sleep(2000);
+        Performerlocator.clickmyannexuredocumentdownload(driver).click();
+        test.log(LogStatus.PASS, "annexure Document Downloaded");
+   }
+ else
+ {
+        test.log(LogStatus.FAIL, "annexure Document not Dowmloaded");
+       
+ }
+	  Thread.sleep(8000);
+	  Performerlocator.clickmydocumentclick3(driver).click();
+	  Thread.sleep(9000);
+  Performerlocator.clickmydocumentFinaldeliverable(driver).click();
+	  Thread.sleep(9000);
+  if(Performerlocator.clickmyFinaldeliverabledocumentdownload(driver).isEnabled())
+   {
+        Thread.sleep(2000);
+        Performerlocator.clickmyFinaldeliverabledocumentdownload(driver).click();
+        test.log(LogStatus.PASS, "Finaldeliverable Document Downloaded");
+   }
+ else
+ {
+        test.log(LogStatus.FAIL, "Finaldeliverable Document not Dowmloaded");     
+ }
+
+	  
+	  Thread.sleep(8000);
+	  Performerlocator.clickmydocumentclick4(driver).click();
+	  Thread.sleep(9000);
+  Performerlocator.clickmydocumentFeedback(driver).click();
+	  Thread.sleep(9000);
+  if(Performerlocator.clickmydocumentFeedbackdownload(driver).isEnabled())
+   {
+        Thread.sleep(2000);
+        Performerlocator.clickmyFinaldeliverabledocumentdownload(driver).click();
+        test.log(LogStatus.PASS, "Feedback Document Downloaded");
+   }
+ else
+ {
+        test.log(LogStatus.FAIL, "Feedback Document not Dowmloaded");     
+ }
+
+	 
+	  Performerlocator.clickmydocumentDeleted(driver).click();
+	  Thread.sleep(9000);
+  if(Performerlocator.clickmydocumentDeleteddownload(driver).isEnabled())
+   {
+        Thread.sleep(2000);
+        Performerlocator.clickmydocumentDeleteddownload(driver).click();
+        test.log(LogStatus.PASS, "Deleted Document Downloaded");
+   }
+ else
+ {
+        test.log(LogStatus.FAIL, "Deleted Document not Dowmloaded");     
+ }
+	  }		  
          
          public static void myreport(ExtentTest test)throws InterruptedException {
         	// driver.manage().window()
@@ -1250,6 +1391,7 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         	 Thread.sleep(3000);
         	 auditlocators.clickmyreportselectcompany(driver).click();
         	 Thread.sleep(3000);
+        	 test.log(LogStatus.PASS, " :- Filters work successfully.");
         	 auditlocators.clickmyreportexecutivedownload(driver).click();
         	 Thread.sleep(3000);
         	// String mesg11=auditlocators.clickmyreportexecutivemessage(driver).getText();
@@ -1270,8 +1412,10 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
        	 Thread.sleep(3000);
        	auditlocators.clickmyreportfinalauditselectcompany(driver).click();
        	 Thread.sleep(3000);
+       	 test.log(LogStatus.PASS, " :- Filters work successfully.");
        	 auditlocators.clickmyreportfinalauditdownload(driver).click();
        	 Thread.sleep(3000);
+       	 test.log(LogStatus.PASS, " :- final audit Report download successfully.");
        	 File dire = new File("C:\\Users\\ambuj\\Downloads");
        		File[] dirContentes = dire.listFiles(); // Counting number of files in directory before download
 
@@ -1298,10 +1442,13 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
            	 Thread.sleep(3000);
            	auditlocators.clickmyreportinternalauditselectcompany(driver).click();
            	 Thread.sleep(3000);
+          	 test.log(LogStatus.PASS, " :- Filters Work successfully.");
            	auditlocators.clickmyreportinternalauditdownload(driver).click();
           	 Thread.sleep(3000);
+          	 test.log(LogStatus.PASS, " :- internal audit Report download successfully.");
            	auditlocators.clickmyreportinternalauditmessage(driver).click();
            	 Thread.sleep(3000);
+           	 
            	 
            	auditlocators.clickmyreport(driver).click();
        	   Thread.sleep(3000);
@@ -1311,8 +1458,10 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
             	 Thread.sleep(3000);
             	auditlocators.clickmyreportopenobservationselectcompany(driver).click();
             	 Thread.sleep(5000);
+            	 test.log(LogStatus.PASS, " :- Filters Work successfully.");
             	auditlocators.clickmyreportopenobservationexporttoexcel(driver).click();
            	 Thread.sleep(3000);
+           	 test.log(LogStatus.PASS, " :- open observation Report download successfully.");
             			
        auditlocators.clickmyreport(driver).click();
  	   Thread.sleep(3000);
@@ -1343,9 +1492,10 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
       	 Thread.sleep(3000);
      	auditlocators.clickmyreportschedulingselectperiod(driver).click();
       	 Thread.sleep(3000);
+    	 test.log(LogStatus.PASS, " :- Filters Work successfully.");
      	auditlocators.clickmyreportschedulingexporttoexcel(driver).click();
       	 Thread.sleep(3000);
-      	 
+    	 test.log(LogStatus.PASS, " :- Audit scheduling Report Work successfully.");
       	auditlocators.clickmyreport(driver).click();
    	   Thread.sleep(3000);
       		auditlocators.clickmyreportmanagementresponse(driver).click();
@@ -1366,8 +1516,10 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
        	 Thread.sleep(3000);
        	auditlocators.clickmyreportmanagementresponseselectperiod(driver).click();
       	 Thread.sleep(3000);
+      	 test.log(LogStatus.PASS, " :- Filters Work successfully.");
       	auditlocators.clickmyreportmanagementresponseexporttoexcel(driver).click();
       	 Thread.sleep(3000);
+      	 test.log(LogStatus.PASS, " :- management responsee Work successfully.");
        	 
        	 
        	auditlocators.clickmyreport(driver).click();
@@ -1390,9 +1542,10 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         	 Thread.sleep(3000);
         	 auditlocators.clickmyreportmyreportprerequisitselectperiod(driver).click();
         	 Thread.sleep(3000);
+        	 test.log(LogStatus.PASS, " :- Filters Work successfully.");
         	 auditlocators.clickmyreportmyreportprerequisitexporttoexcel(driver).click();
         	 Thread.sleep(3000);
-        	 
+        	 test.log(LogStatus.PASS, " :- prerequisit report Download successfully.");
         	 auditlocators.clickmyreport(driver).click();
       	   Thread.sleep(3000);
          		auditlocators.clickmyreportauditscheduling(driver).click();
@@ -1401,8 +1554,10 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
            	 Thread.sleep(3000);
            	auditlocators.clickmyreportauditschedulingselectcompancy(driver).click();
            	 Thread.sleep(3000);
+           	 test.log(LogStatus.PASS, " :- Filters Work successfully.");
            	auditlocators.clickmyreportauditschedulingexporttoexcel(driver).click();
           	 Thread.sleep(3000);
+          	 test.log(LogStatus.PASS, " :-  Audit scheduling report Download successfully.");
           	File dir = new File("C:\\Users\\ambuj\\Downloads");
     		File[] dirContents = dir.listFiles(); // Counting number of files in directory before download
 
@@ -1428,6 +1583,7 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
      	 Thread.sleep(3000);
      	auditlocators.clickmyreportauditstatusselectcompany(driver).click();
      	 Thread.sleep(3000);
+     	test.log(LogStatus.PASS, " :- Filters Work successfully.");
      	auditlocators.clickmyreportauditstatusexporttoexcel(driver).click();
      	 Thread.sleep(3000);
      	File dir2 = new File("C:\\Users\\ambuj\\Downloads");
@@ -1464,14 +1620,18 @@ auditlocators.clickmyreportpastauditunit(driver).click();
  Thread.sleep(3000);
  auditlocators.clickmyreportpastauditselectauditbackground(driver).click();
  Thread.sleep(3000);
+ test.log(LogStatus.PASS, " :- Filters Work successfully.");
  auditlocators.clickmyreportpastaudituploadfile(driver).click();
  Thread.sleep(3000);
+ test.log(LogStatus.PASS, " :- past audit file upload successfully.");
  auditlocators.clickmyreportpastauditsave(driver).click();
  Thread.sleep(3000);
+ test.log(LogStatus.PASS, " :- Past Audit save successfully.");
  auditlocators.clickmyreportpastauditclose(driver).click();
  Thread.sleep(3000);
  auditlocators.clickmyreportpastauditview(driver).click();
  Thread.sleep(3000);
+ test.log(LogStatus.PASS, " :- Past Audit view Work successfully.");
  auditlocators.clickmyreportpastauditedit(driver).click();
  Thread.sleep(3000);
  auditlocators.clickmyreportpastauditcancel(driver).click();

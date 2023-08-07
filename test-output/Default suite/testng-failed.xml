@@ -5,17 +5,11 @@
     <classes>
       <class name="newauditproject.audittestcount">
         <methods>
-          <include name="verticalmaster"/>
-          <include name="business"/>
           <include name="Login1"/>
-          <include name="configuration"/>
-          <include name="auditassignment"/>
           <include name="auditorteammaster"/>
           <include name="citymaster"/>
-          <include name="mydocument"/>
           <include name="processingratingmaster"/>
-          <include name="myreport"/>
-          <include name="statemaster"/>
+          <include name="unitMaster"/>
         </methods>
       </class> <!-- newauditproject.audittestcount -->
     </classes>
