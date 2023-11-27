@@ -420,7 +420,13 @@ public class auditlocators {
 	private static WebElement subunitmessage5=null;
 	private static WebElement auditoteamrmessage=null;
 	private static WebElement subunitmessage6=null;
-	public static WebElement setUname(WebDriver driver) {
+	
+	//master 
+	
+	
+	 
+	
+	public static WebElement setUname(WebDriver driver) {                   //old
 		uName=driver.findElement(By.xpath("//*[@id='txtemail']"));
 		return uName;
 	}
@@ -454,6 +460,7 @@ public class auditlocators {
 	}
 	public static WebElement clickars(WebDriver driver) {
 		ars=driver.findElement(By.xpath("//*[@id='dvbtnAudit']/div[1]/img"));
+		//*[@id="dvbtnAudit"]/div[1]/img
 		return ars;
 	}
 	
@@ -1311,7 +1318,8 @@ public  static WebElement clickauditoteamrmessage(WebDriver driver) {
 }
 public  static WebElement clickauditorcancel(WebDriver driver) {
 	
-	auditorcancel=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btnCancel']"));
+	auditorcancel=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_ValidationSummary1']/ul/li"));
+	//*[@id="ContentPlaceHolder1_ValidationSummary1"]/ul/li
 	return auditorcancel;
 }
 public  static WebElement clickselectauditor(WebDriver driver) {
@@ -2251,6 +2259,123 @@ public  static WebElement clickconfigurationdashboardsave(WebDriver driver) {
 	configurationdashboardsave=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btnSave']")); 
 	return configurationdashboardsave;   
 }
+
+////////////////////////////////////////////////NEW DASHBOARD/////////////////////////////////////////////////////////
+public  static WebElement clicknewdashbard(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='CMPMenuBar']/ul/li[3]/a")); 
+	return ars;   
+}
+public  static WebElement clickcompanyname(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_CompanyWise']/div[2]/table/tbody/tr[1]/td[1]/a")); 
+	return ars;   
+}
+public  static WebElement clickondateobdervationhigh(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[6]/a")); 
+	return ars;   
+}
+public  static WebElement clickondateobdervationexoptexcel(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_lbtnExportExcel']")); 
+	return ars;   
+}
+public  static WebElement clickvobservation(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCountDetails']/div[2]/table/tbody/tr[1]/td[8]/a")); 
+	return ars;   
+}
+public  static WebElement clickobservationpopclose(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='divShowDialog']/div/div/div[1]/button")); 
+	return ars;   
+}
+public  static WebElement clickback(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btnBack']")); 
+	return ars;   
+}
+public  static WebElement clickback2(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btn_Back1']")); 
+	return ars;   
+}
+public  static WebElement clickondateobdervationmedium(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[7]/a")); 
+	return ars;   
+}
+public  static WebElement clickondateobdervationlow(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[8]/a")); 
+	return ars;   
+}
+public  static WebElement clickondatetotalobservation(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[9]/a")); 
+	return ars;   
+}
+public  static WebElement clickoverduehighobser(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[10]/a")); 
+	return ars;   
+}
+public  static WebElement clickoverduemediumobser(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[11]/a")); 
+	return ars;   
+}
+public  static WebElement clickoverduelowobservation(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[12]/a")); 
+	return ars;   
+}
+public  static WebElement openoverdueototalobs(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_UnitCount']/div[2]/table/tbody/tr[3]/td[13]/a")); 
+	return ars;   
+}
+public  static WebElement clickprocesswise(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='liNewMail']/a")); 
+	return ars;   
+}
+public  static WebElement clickprocessname(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessWise']/div[2]/table/tbody/tr[2]/td[1]/a")); 
+	return ars;   
+}
+public  static WebElement clickproceopenhighondate(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCount']/div[2]/table/tbody/tr[3]/td[6]/a")); 
+	return ars;   
+}
+public  static WebElement clickproceopenhighexportexcel(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_lbtnExportExcel']")); 
+	//*[@id="ContentPlaceHolder1_lbtnExportExcel"]
+	return ars;   
+}
+public  static WebElement clickproceopenhighobsview(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCountDetails']/div[2]/table/tbody/tr[1]/td[8]/a")); 
+	return ars;   
+}
+public  static WebElement clickproceopenhighobspopclose(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='divShowDialog']/div/div/div[1]/button")); 
+	return ars;   
+}
+public  static WebElement clickproceopenhighobsback(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_btnBack']")); 
+	return ars;   
+}
+public  static WebElement clickproceopenhighobsback1(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCount']/div[2]/table/tbody/tr[3]/td[6]/a")); 
+	return ars;   
+}
+public  static WebElement clickproceopenmediumondate(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCount']/div[2]/table/tbody/tr[3]/td[7]/a")); 
+	//*[@id="grd_ProcessCount"]/div[2]/table/tbody/tr[3]/td[7]/a
+	return ars;   
+}
+public  static WebElement clickproceopenlowondate(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCount']/div[2]/table/tbody/tr[3]/td[8]/a")); 
+	return ars;   
+}
+public  static WebElement clickopenprocetotalondate(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCount']/div[2]/table/tbody/tr[3]/td[9]/a")); 
+	return ars;   
+}
+public  static WebElement clickopenprocehighoverdue(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCount']/div[2]/table/tbody/tr[8]/td[10]/a")); 
+	return ars;   
+}
+public  static WebElement clickopenprocemediumoverdue(WebDriver driver) {
+	ars=driver.findElement(By.xpath("//*[@id='grd_ProcessCount']/div[2]/table/tbody/tr[8]/td[11]/a")); 
+	return ars;   
+}
+
 }
 
 

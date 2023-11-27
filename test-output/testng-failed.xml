@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Auditee.Auditeecount">
+      <class name="newauditproject.audittestcount">
         <methods>
           <include name="Login1"/>
-          <include name="Prerequsiteopencount"/>
+          <include name="openprocemediumoverdue"/>
         </methods>
-      </class> <!-- Auditee.Auditeecount -->
+      </class> <!-- newauditproject.audittestcount -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
