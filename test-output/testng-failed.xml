@@ -3,15 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="newauditproject.audittestcount">
+      <class name="Auditee.Auditeecount">
         <methods>
           <include name="Login1"/>
-          <include name="auditorteammaster"/>
-          <include name="citymaster"/>
-          <include name="processingratingmaster"/>
-          <include name="unitMaster"/>
+          <include name="Prerequsiteopencount"/>
         </methods>
-      </class> <!-- newauditproject.audittestcount -->
+      </class> <!-- Auditee.Auditeecount -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
