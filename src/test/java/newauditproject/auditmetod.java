@@ -24,7 +24,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import Audit.AuditProject.AppTest;
-import Performer.Performerlocator;
+
 
 //import Audit.Arsproduct.AppTest;
 
@@ -38,13 +38,14 @@ public class auditmetod {
 	public static Cell cell=null;
 	public static void Login() throws InterruptedException, IOException {
 		
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\ambuj\\Desktop\\automation\\chromedriver-win64\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver","C:\\Users\\ambuj\\Desktop\\automation\\chromedriver-win64\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","D:\\desktop\\automation\\chromedriver-win64\\chromedriver.exe");
 		  
 		  driver=new ChromeDriver();       //Created new Chrome driver instance.
 		  Thread.sleep(8000);
 		
 		  driver.manage().window().maximize();
-		  fis = new FileInputStream("C://Users//ambuj//Desktop//automation//auditexcelsheet.xlsx");
+		  fis = new FileInputStream("D:\\desktop\\automation\\auditexcelsheet.xlsx");
 			workbook = new XSSFWorkbook(fis);
 			sheet = workbook.getSheetAt(0);
 			Row row0 = sheet.getRow(0);				//Selected 0th index row (First row)
@@ -73,8 +74,350 @@ public class auditmetod {
 			  auditlocators.clickars(driver).click();
 			  
 	}
-	
-	
+	////////////////////////////////////////////////CRITICAL//////////////////////////////////////////////////////
+public static void Masteruser(ExtentTest test)throws InterruptedException {
+		
+		auditlocators.clickMaster(driver).click();
+		 Thread.sleep(8000);
+		 
+			auditlocators.clickUserMaster(driver).click();
+			 Thread.sleep(8000);
+			 
+			 auditlocators.clickaddnew(driver).click();
+			 Thread.sleep(5000);
+			 
+			 
+			 Row row4=sheet.getRow(4);
+			 Cell c1=row4.getCell(1);
+			  String firstName = c1.getStringCellValue();	
+				auditlocators.setfirstname(driver).sendKeys(firstName);
+				 Thread.sleep(2000);
+				 
+				 Row row5=sheet.getRow(5);
+				 c1=row5.getCell(1);
+				 String lastName = c1.getStringCellValue();	
+				 auditlocators.setlastname(driver).sendKeys(lastName);
+				 
+				 Row row6=sheet.getRow(6);
+				 c1=row6.getCell(1);
+				 String desigNation = c1.getStringCellValue();	
+				 auditlocators.setdesignation(driver).sendKeys(desigNation);
+				 
+				 Row row7 = sheet.getRow(7);		               
+			     c1 = row7.getCell(1);	
+			     String emailId = c1.getStringCellValue();	
+			     auditlocators.setemail(driver).sendKeys(emailId);
+				 
+				 
+				 Row row8 = sheet.getRow(8);		               
+			     c1 = row8.getCell(1);
+			     int contactNo= (int)c1.getNumericCellValue();
+			     auditlocators.setcontactno(driver).sendKeys( contactNo+"");
+			     Thread.sleep(8000);
+			     
+			     auditlocators.clickdepartment(driver).click();
+				 Thread.sleep(8000);
+				 
+				 auditlocators.clickchoosedepartment(driver).click();
+				 Thread.sleep(8000);
+				
+				 
+				 auditlocators.clickrole(driver).click();
+				 Thread.sleep(8000);
+				 
+				 auditlocators.clickchooserole(driver).click();
+				 Thread.sleep(8000);
+				 
+				 JavascriptExecutor js=(JavascriptExecutor) driver ;
+					js.executeScript("window.scroll(0,500)");
+					Thread.sleep(8000);
+					
+					 auditlocators.clicksavebtn(driver).click();
+					 Thread.sleep(5000);
+					 String messg=auditlocators.clickusermessage(driver).getText();
+						if(messg.equalsIgnoreCase("User Created Successfully.")) 
+						{
+							test.log(LogStatus.PASS, "User Created Successfully.");
+						}
+						else
+						{
+							test.log(LogStatus.FAIL, "User with Same Email Already Exists.");
+						}
+}
+						public static void unitMaster11(ExtentTest test)throws InterruptedException {
+							
+							auditlocators.clickMaster(driver).click();
+							 Thread.sleep(8000);
+							 
+								auditlocators.clickunitmaster(driver).click();
+								 Thread.sleep(8000);
+								 
+								 auditlocators.clickaddnewbtn(driver).click();
+								 Thread.sleep(5000);
+								 
+								 Row row10=sheet.getRow(10);
+								 Cell c1=row10.getCell(1);
+								  String Name = c1.getStringCellValue();	
+									auditlocators.setname(driver).sendKeys(Name);
+									 Thread.sleep(2000);
+									 
+									  auditlocators.clickunittype(driver).click();
+										 Thread.sleep(8000);
+										 
+										 auditlocators.clickchooseunittype(driver).click();
+										 Thread.sleep(8000);
+										 
+										 Row row11=sheet.getRow(11);
+										 c1=row11.getCell(1);
+										  String Address = c1.getStringCellValue();	
+											auditlocators.setnaddress(driver).sendKeys(Address);
+											 Thread.sleep(2000);
+											 
+											 auditlocators.clickstate(driver).click();
+											 Thread.sleep(8000);
+											 
+											 auditlocators.clickchoosestate(driver).click();
+											 Thread.sleep(8000);
+											 
+											 auditlocators.clickcity(driver).click();
+											 Thread.sleep(8000);
+											 
+											 auditlocators.clickchoosecity(driver).click();
+											 Thread.sleep(8000);
+											 
+											 Row row12=sheet.getRow(12);
+											 c1=row12.getCell(1);
+											  String contactperson = c1.getStringCellValue();	
+												auditlocators.setcontact(driver).sendKeys(contactperson);
+												 Thread.sleep(2000);
+												 
+												 Row row13=sheet.getRow(13);
+												 c1=row13.getCell(1);
+												  String emailid = c1.getStringCellValue();	
+													auditlocators.setemailid(driver).sendKeys(emailid);
+													 Thread.sleep(8000);
+												 
+												 auditlocators.clickstatus(driver).click();
+												 Thread.sleep(8000);
+												 auditlocators.clickchoosestatus(driver).click();
+												 Thread.sleep(8000);
+												 
+												 auditlocators.clicksavebuttn(driver).click();
+												 Thread.sleep(8000);
+												 String messg=auditlocators.clickunitmessage(driver).getText();
+													if(messg.equalsIgnoreCase("Branch Added Successfully.")) 
+													{
+														test.log(LogStatus.PASS, "Branch Added Successfully.");
+													}
+													else
+													{
+														test.log(LogStatus.FAIL, "Branch Already Exist.");// change krna hai
+													}
+						}
+													public static void businessprocess(ExtentTest test)throws InterruptedException {
+														auditlocators.clickMaster(driver).click();
+														 Thread.sleep(8000);
+														 auditlocators.clickprocess(driver).click();
+														 Thread.sleep(8000);
+														 auditlocators.clickprocessadd(driver).click();
+														 Thread.sleep(8000);
+														 
+														 auditlocators.clickproname(driver).click();
+														 Thread.sleep(8000);
+														 Row row21=sheet.getRow(21);
+														 Cell c1=row21.getCell(1);
+														  String proname = c1.getStringCellValue();	
+															auditlocators.clickproname(driver).sendKeys(proname);
+															 Thread.sleep(2000);
+															 auditlocators.clickprosave(driver).click();
+															 Thread.sleep(8000);
+															 String messga=auditlocators.clickprocessmessage(driver).getText();
+																if(messga.equalsIgnoreCase("Process Save Successfully.")) 
+																{
+																	test.log(LogStatus.PASS, "Process Save Successfully.");
+																}
+																else
+																{
+																	test.log(LogStatus.FAIL, "Process already exist");
+																}	
+													}
+																public static void department11(ExtentTest test)throws InterruptedException {
+																	 auditlocators.clickMaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickdeparmentmaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickdeparmentadd(driver).click();
+																	 Thread.sleep(8000);
+																	 	auditlocators.clickdeparmentname(driver).click();
+																		 Thread.sleep(2000);
+																		 Row row27=sheet.getRow(27);
+																		  Cell c1=row27.getCell(1);
+																		  String deparmentname = c1.getStringCellValue();
+																		  auditlocators.clickdeparmentname(driver).sendKeys(deparmentname);
+																			 Thread.sleep(2000);
+																		 auditlocators.clickdeparmentsave(driver).click();
+																		 Thread.sleep(8000);
+																		 
+																		 String messga5=auditlocators.clickdeparmenteditmessage(driver).getText();
+																			if(messga5.equalsIgnoreCase("Department saved successfully")) 
+																			{
+																				test.log(LogStatus.PASS, "Department saved successfully");
+																			}
+																			else
+																			{
+																				test.log(LogStatus.FAIL, "Department already exist");
+																			}				
+							}
+																public static void observationrating(ExtentTest test)throws InterruptedException {
+																	 auditlocators.clickMaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickobservation(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickobservationadd(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickobservationname(driver).click();
+																	 Thread.sleep(2000);
+																	 Row row30=sheet.getRow(30)				;
+																	 Cell c1=row30.getCell(1);
+																	  String observationname = c1.getStringCellValue();	
+																	  auditlocators.clickobservationname(driver).sendKeys(observationname);
+																		 Thread.sleep(2000);
+																		 auditlocators.clickobservationsave(driver).click();
+																		 Thread.sleep(8000);
+																		 String messg=auditlocators.clickobservationsubcategorymessage(driver).getText();
+																			if(messg.equalsIgnoreCase("Observation Category Save Successfully.")) 
+																			{
+																				test.log(LogStatus.PASS, "Observation Category Save Successfully.");
+																			}
+																			else
+																			{
+																				test.log(LogStatus.FAIL, "Observation category already exist");
+																			}											
+					}
+																public static void riskcategory11(ExtentTest test)throws InterruptedException {
+																	 auditlocators.clickMaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickriskcategory(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickriskcategoryadd(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickriskcategoryname(driver).click();
+																	 Thread.sleep(8000);
+																	 Row row35=sheet.getRow(35);
+																	 Cell c1=row35.getCell(1);
+																	  String riskcategoryname = c1.getStringCellValue();	
+																	  auditlocators.clickriskcategoryname(driver).sendKeys(riskcategoryname);
+																		 Thread.sleep(2000);
+																		 auditlocators.clickriskcategorysave(driver).click();
+																		 Thread.sleep(8000);
+																		 String msg=	 auditlocators.clickriskcategorymessage(driver).getText();
+																			if(msg.equalsIgnoreCase("Risk Category Successfully Add")) 
+																			{
+																				test.log(LogStatus.PASS, "Risk Category Successfully Add");
+																			}
+																			else
+																			{
+																				test.log(LogStatus.FAIL, "Category name already exists.");
+																			}
+																}
+																public static void verticalmaster11(ExtentTest test)throws InterruptedException {
+																	 auditlocators.clickMaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickverticalmaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickverticalmasteradd(driver).click();
+																	 Thread.sleep(8000);
+																     auditlocators.clickverticalmastername(driver).click();
+																	 Thread.sleep(8000);
+																	 Row row51=sheet.getRow(51);
+																	 Cell c1=row51.getCell(1);
+																	  String verticalmastername = c1.getStringCellValue();	
+																    auditlocators.clickverticalmastername(driver).sendKeys(verticalmastername);
+																	Thread.sleep(2000);
+																	auditlocators.clickverticalmastersave(driver).click();
+																	Thread.sleep(8000);
+																	 String mesg4=	 auditlocators.clickverticalmastermessage(driver).getText();
+																		if(mesg4.equalsIgnoreCase("Vertical Name Save Successfully."))
+																		{
+																			test.log(LogStatus.PASS, "Vertical Name Save Successfully.");
+																		}
+																		else
+																		{
+																			test.log(LogStatus.FAIL, "Vertical with same name already exists.");
+																		}									
+																}
+																public static void statemaster11(ExtentTest test)throws InterruptedException {
+																	 auditlocators.clickMaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickstatemaster(driver).click();
+																	 Thread.sleep(8000);
+																	 auditlocators.clickstatemasteradd(driver).click();
+																	 Thread.sleep(8000);
+																    auditlocators.clickstatename(driver).click();
+																	 Thread.sleep(8000);
+																	 Row row54=sheet.getRow(54);
+																	  Cell c1=row54.getCell(1);
+																	  String statename = c1.getStringCellValue();	
+																		auditlocators.clickstatename(driver).sendKeys(statename);
+																		 Thread.sleep(5000);
+																	 
+																	 auditlocators.clickcountry(driver).click();
+																	 Thread.sleep(5000);
+																	 auditlocators.clickcountrychoose(driver).click();
+																	 Thread.sleep(8000);
+																	 test.log(LogStatus.PASS, " :- Filters Work Successfully.");
+																	 auditlocators.clickstatesave(driver).click();
+																	 Thread.sleep(8000);
+																	 String mesg6=	 auditlocators.clickmessagestate(driver).getText();
+																		if(mesg6.equalsIgnoreCase("State Saved Successfully"))
+																		{
+																			test.log(LogStatus.PASS, "State Saved Successfully");
+																		}
+																		else
+																		{
+																			test.log(LogStatus.FAIL, "State Already Exists");
+																		}
+																}
+																 public static void citymaster11(ExtentTest test)throws InterruptedException {
+														        	 auditlocators.clickMaster(driver).click();
+														        	 Thread.sleep(8000);
+														        	 auditlocators.clickcitymaster(driver).click();
+														        	 Thread.sleep(8000);
+														        	 auditlocators.clickcitymasteradd(driver).click();
+														        	 Thread.sleep(8000);
+														            auditlocators.clickcityname(driver).click();
+														        	 Thread.sleep(8000);
+														        	 Row row57=sheet.getRow(57);
+														        	  Cell c1=row57.getCell(1);
+														        	  String cityname = c1.getStringCellValue();	
+														        		auditlocators.clickcityname(driver).sendKeys(cityname);
+														        		 Thread.sleep(2000);
+														        		 auditlocators.clickselectstate(driver).click();
+														            	 Thread.sleep(8000);
+														            	 auditlocators.clickchoosestatecity(driver).click();
+														            	 Thread.sleep(8000);
+														            	 
+														        	 //auditlocators.clickcountry(driver).click();
+														        	 Thread.sleep(8000);
+														        	 //auditlocators.clickcountrychoose(driver).click();
+														        	 Thread.sleep(8000);
+														        	 auditlocators.clickcitysave(driver).click();
+														        	 Thread.sleep(8000);
+														        	 String mesg7=	 auditlocators.clickcitysavemessage(driver).getText();
+														        		if(mesg7.equalsIgnoreCase("City Saved Successfully"))
+														        		{
+														        			test.log(LogStatus.PASS, "City Saved Successfully");
+														        		}
+														        		else
+														        		{
+														        			test.log(LogStatus.FAIL, "City Already Exists");
+														        		}			
+																
+}
+													
+													
+						
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static void Master(ExtentTest test)throws InterruptedException {
 		
 		auditlocators.clickMaster(driver).click();
@@ -1301,14 +1644,14 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
         	 test.log(LogStatus.PASS, " :- Filter Works Successfully.");
       		 auditlocators.clickmydocumentdownload(driver).click();
         	 Thread.sleep(8000);
-        	 Performerlocator.clickmydocumentclick1(driver).click();
+        	 auditlocators.clickmydocumentclick1(driver).click();
 			  Thread.sleep(9000);
-		   Performerlocator.clickmydocumentreview(driver).click();
+		   auditlocators.clickmydocumentreview(driver).click();
 			  Thread.sleep(9000);
-		   if(Performerlocator.clickmyreviewdocumentdownload(driver).isEnabled())
+		   if(auditlocators.clickmyreviewdocumentdownload(driver).isEnabled())
            {
                 Thread.sleep(2000);
-                Performerlocator.clickmyreviewdocumentdownload(driver).click();
+                auditlocators.clickmyreviewdocumentdownload(driver).click();
                 test.log(LogStatus.PASS, "Review Document Downloaded");
            }
          else
@@ -1318,14 +1661,14 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
          }
 	  
 	  Thread.sleep(8000);
-	  Performerlocator.clickmydocumentclick2(driver).click();
+	  auditlocators.clickmydocumentclick2(driver).click();
 	  Thread.sleep(9000);
-  Performerlocator.clickmydocumentannexure(driver).click();
+  auditlocators.clickmydocumentannexure(driver).click();
 	  Thread.sleep(9000);
-  if(Performerlocator.clickmyannexuredocumentdownload(driver).isEnabled())
+  if(auditlocators.clickmyannexuredocumentdownload(driver).isEnabled())
    {
         Thread.sleep(2000);
-        Performerlocator.clickmyannexuredocumentdownload(driver).click();
+        auditlocators.clickmyannexuredocumentdownload(driver).click();
         test.log(LogStatus.PASS, "annexure Document Downloaded");
    }
  else
@@ -1334,14 +1677,14 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
        
  }
 	  Thread.sleep(8000);
-	  Performerlocator.clickmydocumentclick3(driver).click();
+	  auditlocators.clickmydocumentclick3(driver).click();
 	  Thread.sleep(9000);
-  Performerlocator.clickmydocumentFinaldeliverable(driver).click();
+  auditlocators.clickmydocumentFinaldeliverable(driver).click();
 	  Thread.sleep(9000);
-  if(Performerlocator.clickmyFinaldeliverabledocumentdownload(driver).isEnabled())
+  if(auditlocators.clickmyFinaldeliverabledocumentdownload(driver).isEnabled())
    {
         Thread.sleep(2000);
-        Performerlocator.clickmyFinaldeliverabledocumentdownload(driver).click();
+        auditlocators.clickmyFinaldeliverabledocumentdownload(driver).click();
         test.log(LogStatus.PASS, "Finaldeliverable Document Downloaded");
    }
  else
@@ -1351,14 +1694,14 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
 
 	  
 	  Thread.sleep(8000);
-	  Performerlocator.clickmydocumentclick4(driver).click();
+	  auditlocators.clickmydocumentclick4(driver).click();
 	  Thread.sleep(9000);
-  Performerlocator.clickmydocumentFeedback(driver).click();
+  auditlocators.clickmydocumentFeedback(driver).click();
 	  Thread.sleep(9000);
-  if(Performerlocator.clickmydocumentFeedbackdownload(driver).isEnabled())
+  if(auditlocators.clickmydocumentFeedbackdownload(driver).isEnabled())
    {
         Thread.sleep(2000);
-        Performerlocator.clickmyFinaldeliverabledocumentdownload(driver).click();
+        auditlocators.clickmyFinaldeliverabledocumentdownload(driver).click();
         test.log(LogStatus.PASS, "Feedback Document Downloaded");
    }
  else
@@ -1367,12 +1710,12 @@ public static void statemaster(ExtentTest test)throws InterruptedException {
  }
 
 	 
-	  Performerlocator.clickmydocumentDeleted(driver).click();
+	  auditlocators.clickmydocumentDeleted(driver).click();
 	  Thread.sleep(9000);
-  if(Performerlocator.clickmydocumentDeleteddownload(driver).isEnabled())
+  if(auditlocators.clickmydocumentDeleteddownload(driver).isEnabled())
    {
         Thread.sleep(2000);
-        Performerlocator.clickmydocumentDeleteddownload(driver).click();
+        auditlocators.clickmydocumentDeleteddownload(driver).click();
         test.log(LogStatus.PASS, "Deleted Document Downloaded");
    }
  else

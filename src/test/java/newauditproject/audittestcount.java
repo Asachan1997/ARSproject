@@ -32,7 +32,7 @@ public class audittestcount {
 		}
 		
 		
-	//@Test(priority=1)
+//@Test(priority=1)
 		void Master() throws InterruptedException {
 		test=extent.startTest("Master-User created successfully");
 		auditmetod.Master(test);
