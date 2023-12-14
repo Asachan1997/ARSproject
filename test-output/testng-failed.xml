@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="newauditproject.audittestcount">
+      <class name="audit.ArsTestCase">
         <methods>
-          <include name="Login1"/>
-          <include name="openprocemediumoverdue"/>
+          <include name="Login"/>
+          <include name="AuditTrackerPlanned"/>
+          <include name="setBrowser"/>
         </methods>
-      </class> <!-- newauditproject.audittestcount -->
+      </class> <!-- audit.ArsTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
